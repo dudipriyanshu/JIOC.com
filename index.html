@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaipur Institute of Cricket</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?display=swap&family=Manrope:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700;900">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+    <div class="relative flex size-full min-h-screen flex-col bg-[#FBF8EF] overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+        <div class="layout-container flex h-full grow flex-col">
+
+            <!-- Header Section -->
+            <header class="flex items-center justify-between border-b border-solid border-b-[#F5EFDB] px-6 py-3 md:px-10">
+                <h2 class="text-[#201A09] text-lg font-bold">Jaipur Institute of Cricket</h2>
+                <nav class="hidden md:flex gap-6">
+                    <a class="text-[#201A09] text-sm font-medium" href="#">Home</a>
+                    <a class="text-[#201A09] text-sm font-medium" href="#">About Us</a>
+                    <a class="text-[#201A09] text-sm font-medium" href="#">Programs</a>
+                    <a class="text-[#201A09] text-sm font-medium" href="#">Gallery</a>
+                    <a class="text-[#201A09] text-sm font-medium" href="#">Contact</a>
+                </nav>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="px-6 md:px-40 flex flex-1 justify-center py-5">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                    <div class="p-4">
+                        <div class="flex min-h-[400px] md:min-h-[480px] flex-col gap-6 bg-cover bg-center items-center justify-center p-4 rounded-xl"
+                             style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://cdn.usegalileo.ai/sdxl10/36392a1e-b897-457a-be97-e1fcc821f16b.png");'>
+                            <h1 class="text-white text-3xl md:text-4xl font-black text-center">
+                                Welcome to Jaipur Institute of Cricket
+                            </h1>
+                            <!-- "Join Now" Button -->
+                            <a href="registration.html">
+                                <button class="bg-[#FAC638] text-[#AB2217] text-sm font-bold rounded-xl h-10 md:h-12 px-5 shadow-lg">
+                                    Join Now
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- About Section -->
+                    <h2 class="text-[#201A09] text-[22px] font-bold px-4 pb-3 pt-5">About Us</h2>
+                    <p class="text-[#201A09] text-base px-4">
+                        Jaipur Institute of Cricket is a premier sports academy offering world-class training in various sports including cricket, football, badminton, table tennis, skating, and kabaddi. Our expert coaches and top-notch facilities help athletes unlock their full potential.
+                    </p>
+
+                    <!-- Gallery Section with More Images -->
+                    <h2 class="text-[#201A09] text-[22px] font-bold px-4 pb-3 pt-5">Gallery</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 p-4">
+                        <div class="w-full aspect-square bg-cover rounded-xl" style='background-image: url("https://cdn.usegalileo.ai/sdxl10/2c1712cf-2360-455e-9625-31ce52b841d9.png");'></div>
+                        <div class="w-full aspect-square bg-cover rounded-xl" style='background-image: url("https://cdn.usegalileo.ai/sdxl10/3cccb853-e294-42eb-b6cd-2f4f3f8258e7.png");'></div>
+                        <div class="w-full aspect-square bg-cover rounded-xl hidden md:block" style='background-image: url("https://cdn.usegalileo.ai/sdxl10/9d141d85-06e6-4d4a-8e83-504d8d565559.png");'></div>
+                        <div class="w-full aspect-square bg-cover rounded-xl" style='background-image: url("https://cdn.usegalileo.ai/sdxl10/48fcaab1-00ab-4436-b3b7-e495759e92e5.png");'></div>
+                        <div class="w-full aspect-square bg-cover rounded-xl hidden md:block" style='background-image: url("https://cdn.usegalileo.ai/sdxl10/0ac63d2b-51e1-481e-b78b-df66903ee8e6.png");'></div>
+                        <div class="w-full aspect-square bg-cover rounded-xl" style='background-image: url("https://cdn.usegalileo.ai/sdxl10/a7688195-561a-4088-b50f-79bf011eeb06.png");'></div>
+                    </div>
+
+                    <!-- Contact Section -->
+                    <h2 class="text-[#201A09] text-[22px] font-bold px-4 pb-3 pt-5">Contact Us</h2>
+                    <p class="text-[#A07D1C] text-sm px-4">📞 Phone: +91 1234567890</p>
+                    <p class="text-[#A07D1C] text-sm px-4">📧 Email: info@jaipursports.com</p>
+
+                    <!-- Footer -->
+                    <footer class="flex flex-col gap-6 px-5 py-10 text-center">
+                        <div class="flex flex-wrap items-center justify-center gap-6">
+                            <a class="text-[#A07D1C] text-base" href="#">Home</a>
+                            <a class="text-[#A07D1C] text-base" href="#">About Us</a>
+                            <a class="text-[#A07D1C] text-base" href="#">Gallery</a>
+                            <a class="text-[#A07D1C] text-base" href="#">Contact Us</a>
+                        </div>
+                        <p class="text-[#A07D1C] text-base">© 2025 Jaipur Institute of Cricket. All rights reserved.</p>
+                    </footer>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

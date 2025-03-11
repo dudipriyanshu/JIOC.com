@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Sports Event</title>
+    <style>
+        /* 🔹 Global Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Arial", sans-serif; }
+        body { background: linear-gradient(135deg, #000, #111); color: white; display: flex; justify-content: center; align-items: center; height: 100vh; padding: 20px; }
+        .container { 
+            background: rgba(255, 255, 255, 0.1); 
+            padding: 25px; 
+            border-radius: 10px; 
+            box-shadow: 0px 3px 10px rgba(255, 165, 0, 0.3); 
+            text-align: center; 
+            width: 90%; 
+            max-width: 450px; 
+            transition: 0.3s ease-in-out;
+        }
+
+        .container:hover { box-shadow: 0px 5px 15px rgba(255, 165, 0, 0.5); }
+        h1 { font-size: 24px; color: #ffcc33; margin-bottom: 10px; }
+        p { font-size: 14px; color: #bbb; margin-bottom: 15px; }
+        .upi-details { font-size: 18px; font-weight: bold; background: #ffeb3b; color: black; padding: 10px; border-radius: 5px; display: inline-block; }
+        .qr-code { width: 200px; margin: 15px 0; border-radius: 5px; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); }
+        label { display: block; text-align: left; font-weight: bold; margin-top: 10px; color: #ffcc33; }
+        input { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.9); color: black; border: none; border-radius: 5px; font-size: 16px; margin-bottom: 10px; }
+        button {
+            background: linear-gradient(45deg, #ff9900, #ff6600);
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover { background: linear-gradient(45deg, #ff6600, #ff3300); transform: scale(1.05); }
+        .error { color: red; font-size: 14px; margin-top: 5px; }
+        .success { color: green; font-size: 16px; font-weight: bold; margin-top: 10px; }
+
+        /* 🔹 Responsive Adjustments */
+        @media (max-width: 768px) { 
+            .container { width: 95%; } 
+            h1 { font-size: 22px; }
+            input, button { font-size: 14px; padding: 10px; }
+            .qr-code { width: 180px; }
+        }
+        @media (max-width: 480px) { 
+            .container { width: 100%; padding: 15px; } 
+            h1 { font-size: 20px; }
+            input, button { font-size: 14px; padding: 10px; }
+            .qr-code { width: 150px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>💳 UPI Payment for Registration</h1>
+        <p>Send ₹7500 to the following UPI ID:</p>
+        <div class="upi-details">your-upi-id@upi</div>
+
+        <p>Or scan the QR code below:</p>
+        <img src="upi-qr.png" alt="UPI QR Code" class="qr-code">
+
+        <p>After making the payment, enter your Transaction ID below:</p>
+        <label for="upi-transaction">UPI Transaction ID</label>
+        <input type="text" id="upi-transaction" placeholder="Enter UPI Transaction ID" required>
+
+        <button onclick="submitPayment()">Submit Payment</button>
+        <p id="responseMessage"></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var storedData = sessionStorage.getItem("registrationData");
+            if (!storedData) {
+                alert("❌ No registration data found! Please complete registration first.");
+                window.location.href = "registration.html";
+                return;
+            }
+        });
+
+        function submitPayment() {
+            var transactionId = document.getElementById("upi-transaction").value.trim();
+            var responseMessage = document.getElementById("responseMessage");
+
+            if (transactionId === "") {
+                responseMessage.innerHTML = "<span class='error'>❌ Please enter your UPI Transaction ID before submitting.</span>";
+                return;
+            }
+
+            var storedData = JSON.parse(sessionStorage.getItem("registrationData"));
+            storedData.transaction_id = transactionId; // Add Transaction ID to data
+
+            var formData = new FormData();
+            for (var key in storedData) {
+                formData.append(key, storedData[key]);
+            }
+
+            fetch("https://script.google.com/macros/s/AKfycbz5yVG6y7w_vZA6XwqGVZ6kNrTfnte05qodnE81zWJWAMbtZf5ZJJeSlXHl9tI7QpZBLA/exec", {  // Replace with your Web App URL
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                responseMessage.innerHTML = "<span class='success'>✅ Payment Submitted Successfully! Redirecting...</span>";
+
+                sessionStorage.removeItem("registrationData");
+
+                setTimeout(() => {
+                    window.location.href = "index.html";  
+                }, 3000);
+            })
+            .catch(error => {
+                responseMessage.innerHTML = "<span class='error'>❌ Error submitting payment. Please try again.</span>";
+            });
+        }
+    </script>
+
+</body>
+</html>
