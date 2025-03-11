@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Sports Event</title>
+    <style>
+        /* 🔹 Global Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Arial", sans-serif; }
+        body { 
+            background: linear-gradient(135deg, #000, #111); 
+            color: white; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            padding: 20px; 
+            text-align: center;
+        }
+        .container { 
+            background: rgba(255, 255, 255, 0.1); 
+            padding: 25px; 
+            border-radius: 10px; 
+            box-shadow: 0px 3px 10px rgba(255, 165, 0, 0.3); 
+            width: 90%; 
+            max-width: 450px; 
+            transition: 0.3s ease-in-out;
+        }
+        .container:hover { box-shadow: 0px 5px 15px rgba(255, 165, 0, 0.5); }
+        h1 { font-size: 24px; color: #ffcc33; margin-bottom: 10px; }
+        p { font-size: 16px; color: #bbb; margin-bottom: 15px; }
+        .success-icon {
+            font-size: 50px;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        .btn {
+            background: linear-gradient(45deg, #ff9900, #ff6600);
+            color: black;
+            font-weight: bold;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover { background: linear-gradient(45deg, #ff6600, #ff3300); transform: scale(1.05); }
+
+        /* 🔹 Responsive Adjustments */
+        @media (max-width: 768px) { 
+            .container { width: 95%; } 
+            h1 { font-size: 22px; }
+            .btn { font-size: 14px; padding: 10px; }
+        }
+        @media (max-width: 480px) { 
+            .container { width: 100%; padding: 15px; } 
+            h1 { font-size: 20px; }
+            .btn { font-size: 14px; padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="success-icon">✅</div>
+        <h1>Thank You for Registering!</h1>
+        <p>Your registration and payment have been successfully received. You will be contacted shortly with further details.</p>
+        
+        <p>Redirecting to the homepage in <span id="countdown">10</span> seconds...</p>
+        <a href="index.html" class="btn">Go to Homepage</a>
+    </div>
+
+    <script>
+        let countdown = 10;
+        setInterval(() => {
+            countdown--;
+            document.getElementById("countdown").innerText = countdown;
+            if (countdown === 0) {
+                window.location.href = "index.html";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
